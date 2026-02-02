@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="styles.css" />
+<link rel="script" href="script.js" />
+<title>Be My Valentine? 💝</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet"/>
+
+</head>
+<audio id="bg-music" loop>
+  <source src="valentine.mp3" type="audio/mpeg">
+</audio>
+
+<body>
+
+<!-- Fireworks Canvas -->
+<canvas id="fireworks"></canvas>
+
+<!-- Main Content -->
+<div class="main">
+  <div class="card" id="mainCard">
+
+    <!-- Tulip Bouquet -->
+    <div class="bouquet">
+      <!-- Stems -->
+      <div class="stem stem-c"></div>
+      <div class="stem stem-l"></div>
+      <div class="stem stem-r"></div>
+      <div class="stem stem-ll"></div>
+      <div class="stem stem-rr"></div>
+      <!-- Leaves -->
+      <div class="leaf leaf-l"></div>
+      <div class="leaf leaf-r"></div>
+      <!-- Tulips -->
+      <div class="tulip tulip-c">
+        <div class="petal-wrap">
+          <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+        </div>
+      </div>
+      <div class="tulip tulip-l">
+        <div class="petal-wrap">
+          <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+        </div>
+      </div>
+      <div class="tulip tulip-r">
+        <div class="petal-wrap">
+          <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+        </div>
+      </div>
+      <div class="tulip tulip-ll">
+        <div class="petal-wrap">
+          <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+        </div>
+      </div>
+      <div class="tulip tulip-rr">
+        <div class="petal-wrap">
+          <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Heading -->
+    <h1 class="heading">A Valentine's Invitation</h1>
+    <p class="sub">for my love Althea Faye Melendres ♡</p>
+
+    <!-- Photo Carousel -->
+    <div class="carousel-wrap" id="carouselWrap">
+      <div class="carousel" id="carousel">
+        <div class="slide">
+          <img class="slide-img" src="pic1.jpg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">I</div>
+        </div>
+        <div class="slide">
+          <img class="slide-img" src="pic2.jpg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">Love</div>
+        </div>
+        <div class="slide">
+          <img class="slide-img" src="pic3.jpg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">You</div>
+        </div>
+        <div class="slide">
+          <img class="slide-img" src="pic4.jpg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">So</div>
+        </div>
+        <div class="slide">
+          <img class="slide-img" src="pic5.jpg" alt="">
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">Much</div>
+        </div>
+      </div>
+      <button class="arrow arrow-l" onclick="prevSlide()">&#8249;</button>
+      <button class="arrow arrow-r" onclick="nextSlide()">&#8250;</button>
+    </div>
+    <div class="dots" id="dots"></div>
+
+    <!-- Question & Buttons -->
+    <div id="questionSection">
+      <p class="question">Will you be my <span>Valentine</span>? 💝</p>
+      <div class="btn-row" id="btnRow">
+        <button class="btn btn-yes" id="btnYes" onclick="onYes()">Yes!</button>
+        <button class="btn btn-no" id="btnNo" onclick="onNo()">No</button>
+      </div>
+      <p class="no-msg" id="noMsg"></p>
+    </div>
+
+    <!-- Celebration (step 1) -->
+    <div class="celebration" id="celebration">
+      <div class="heart-burst">💝</div>
+      <h2>Happy Valentines Love!</h2>
+      <p>YEyy ni YES sya ohh MWAMWAA.😽<br/> Kissan tika pina wa diri wa didto ✨</p>
+      <button class="btn btn-yes" style="margin-top:12px; font-size:0.95rem; padding:12px 34px;" onclick="showOutfitPicker()">
+        Continue →
+      </button>
+    </div>
+
+    <!-- Outfit Picker (step 2) -->
+    <div class="outfit-section" id="outfitSection">
+      <p class="outfit-title">Pili og Color Theme 🎨</p>
+      <p class="outfit-sub">Unsa man atong suoton na Color?</p>
+
+      <!-- Dress SVG -->
+      <div class="dress-stage">
+        <svg viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="dressGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop id="gradStop1" offset="0%" stop-color="#e63964"/>
+              <stop id="gradStop2" offset="100%" stop-color="#c41e52"/>
+            </linearGradient>
+            <linearGradient id="shineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
+              <stop offset="50%" stop-color="rgba(255,255,255,0.04)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </linearGradient>
+          </defs>
+          <!-- Hair -->
+          <ellipse cx="70" cy="28" rx="18" ry="20" fill="#2c1a0e"/>
+          <ellipse cx="70" cy="22" rx="16" ry="14" fill="#3d2314"/>
+          <!-- Head -->
+          <ellipse cx="70" cy="38" rx="14" ry="16" fill="#f0c8a0"/>
+          <!-- Hair overlay (bangs) -->
+          <ellipse cx="70" cy="28" rx="16" ry="10" fill="#2c1a0e"/>
+          <!-- Neck -->
+          <rect x="65" y="52" width="10" height="10" fill="#f0c8a0" rx="3"/>
+          <!-- Bodice -->
+          <path d="M52,60 Q50,58 48,62 L42,90 Q70,95 98,90 L92,62 Q90,58 88,60 Q80,56 70,58 Q60,56 52,60 Z" fill="url(#dressGrad)"/>
+          <!-- Bodice shine -->
+          <path d="M52,60 Q50,58 48,62 L42,90 Q70,95 98,90 L92,62 Q90,58 88,60 Q80,56 70,58 Q60,56 52,60 Z" fill="url(#shineGrad)"/>
+          <!-- Neckline detail -->
+          <path d="M58,60 Q70,66 82,60" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.2" stroke-linecap="round"/>
+          <!-- Arms -->
+          <path d="M48,62 Q38,75 36,95 Q35,100 40,100 Q42,95 44,82 L50,68" fill="url(#dressGrad)"/>
+          <path d="M92,62 Q102,75 104,95 Q105,100 100,100 Q98,95 96,82 L90,68" fill="url(#dressGrad)"/>
+          <!-- Hands -->
+          <ellipse cx="39" cy="101" rx="4" ry="3.5" fill="#f0c8a0"/>
+          <ellipse cx="101" cy="101" rx="4" ry="3.5" fill="#f0c8a0"/>
+          <!-- Belt / waist -->
+          <rect x="44" y="88" width="52" height="6" rx="3" fill="rgba(0,0,0,0.18)"/>
+          <ellipse cx="70" cy="91" rx="3.5" ry="2.5" fill="rgba(212,168,67,0.7)"/>
+          <!-- Skirt -->
+          <path d="M44,93 Q30,140 24,175 Q22,185 30,185 L70,182 L110,185 Q118,185 116,175 Q110,140 96,93 Z" fill="url(#dressGrad)"/>
+          <!-- Skirt shine -->
+          <path d="M44,93 Q35,130 30,155 Q50,148 70,150 Q60,135 52,105 Z" fill="url(#shineGrad)"/>
+          <!-- Skirt fold lines -->
+          <path d="M55,100 Q48,140 42,178" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+          <path d="M70,98 L70,182" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+          <path d="M85,100 Q92,140 98,178" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+          <!-- Hem sparkles -->
+          <circle cx="35" cy="180" r="1.5" fill="rgba(212,168,67,0.6)"/>
+          <circle cx="55" cy="183" r="1" fill="rgba(212,168,67,0.5)"/>
+          <circle cx="85" cy="183" r="1.2" fill="rgba(212,168,67,0.5)"/>
+          <circle cx="108" cy="179" r="1.5" fill="rgba(212,168,67,0.6)"/>
+          <!-- Hair accessory sparkle -->
+          <circle cx="83" cy="25" r="2" fill="rgba(212,168,67,0.7)"/>
+        </svg>
+      </div>
+
+      <!-- Swatches -->
+      <div class="swatch-grid" id="swatchGrid"></div>
+      <p class="swatch-label" id="swatchLabel">— choose a color —</p>
+
+      <button class="btn-confirm" id="btnConfirm" onclick="confirmOutfit()">
+       WOWERS Kana bagay! ✨
+      </button>
+    </div>
+
+    <!-- Final Message (step 3) -->
+    <div class="final-msg" id="finalMsg">
+      <div class="heart-burst">💝</div>
+      <h2>Can't wait seeing you lovee.</h2>
+      <p class="final-chosen">Imong ge pili: <span id="chosenColorName">—</span></p>
+      <p>Ilove youuu mwa mwaa<br/> Lets enjoy that special day ✨🌹</p>
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
